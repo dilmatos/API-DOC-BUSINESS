@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://brewdatBM-api-porta/api/v1"
+      "url": "https://abi-apim-brewdat-bus-metadata.azure-ai.net"
     }
   ],
   "paths": {
