@@ -121,7 +121,10 @@
         "business_domain": {"type": "string", "description": "The business domains that are part of the Entity and the Attribute","enum":["Audit", "Common", "Customer", "Finance", "Geo", "Legal", "Logistics", "Marketing", "Order", "People", "Procurement", "Product", "Promotion", "Sales", "Supply", "Technology"]},
         "business_Sub-Domain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
         "subregion": {"type": "string", "description": "Subregion that a country may have."},
-        "data_Product": {"type": "string", "description": "Origin data source name"}
+        "data_Product": {"type": "string", "description": "Origin data source name"},
+        "tableName" : {"type":"string", "description": "gh_customer"},
+        "columnName": {"type":"string", "description":"customer_nm"},
+        "country": {"type":"string", "description":"Ghana"}
         },
         "required": ["ObjectType", "tableName", "dlz", "zone", "business_domain", "business_Sub-Domain", "subregion", "data_Product"]
       },
