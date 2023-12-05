@@ -26,43 +26,43 @@
                 "dlz": "BEES",
                 "zone": "AFR",
                 "business_domain": "Customer",
-                "business_Sub-Domain": "-",
-                "subregion": "-",
+                "business_sub_domain": "-",
+                "sub_region": "-",
                 "data_Source": "Sap",
                 "object": {
-                  "tableName" : "gh_customer",
-                  "columnName": "customer_nm",
+                  "table_name" : "gh_customer",
+                  "column_name": "customer_nm",
                   "country": "Ghana" },
                 "object_type": 
                 {
-                "logicalName": "Customer",
-                "descriptionLogicalName": "Entity that has information regarding Customer",
-                "update_Type": "Full",
-                "updateFrequencyTable": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
-                "data_Storage_time": "1 year",
-                "data_Volume": "5gb",
+                "logical_name": "Customer",
+                "description_logical_name": "Entity that has information regarding Customer",
+                "update_type": "Full",
+                "update_frequency_table": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
+                "data_storage_time": "1 year",
+                "data_volume": "5gb",
                 "country": "Ghana",
                 "attribute": [
                   {
-                    "attribute_Name": "customer_nm",
+                    "attribute_name": "customer_nm",
                     "attribute_description": "the client name",
                     "comment": "xxx",
-                    "isPII": "Yes",
-                    "businessRule": "no have",
-                    "sdiClassification": "Internal Use Only",
+                    "is_pii": "Yes",
+                    "business_rule": "no have",
+                    "sdi_classification": "Internal Use Only",
                     "country": "Ghana"
                   }
                 ],
                 "personas": {
-                  "dataOwnerEmail": "helen.place@za.ab-inbev.com",
-                  "businessStewardEmail": "helen.place@za.ab-inbev.com",
-                  "technicalStewardEmail": "helen.place@za.ab-inbev.com",
-                  "dataGovernorEmail": "Name of Data Governor",
-                  "businessDomainGovernorEmail": "Name of Business Domain Governor"
+                  "data_owner_email": "helen.place@za.ab-inbev.com",
+                  "business_steward_email": "helen.place@za.ab-inbev.com",
+                  "technical_steward_email": "helen.place@za.ab-inbev.com",
+                  "data_governor_email": "Name of Data Governor",
+                  "business_domain_governor_email": "Name of Business Domain Governor"
                 },
                 "layers": {
-                  "medallionLayerName": "brz",
-                  "layerName": "Bronze"
+                  "medallion_layerName": "brz",
+                  "layer_name": "Bronze"
                 }
               } 
               }
@@ -119,21 +119,21 @@
         "dlz": {"type": "string", "description": "DLZ Abbreviation", "enum": ["AFR","ANLT","APC","AUR", "BEES","BRWR", "EUR", "GHQ", "GHQML",  "IL",  "LOLA", " MRTC",  "MAZ", "MAZML",  " MGMT", "MLPLT", "NAZ", "PPLE", "PLTL", " PRTL", "SPLYC", "NCSA"]},
         "zone": {"type": "string", "description": "Abbreviation for Zones","enum": ["AFR", "APC", "EUR", "GHQ", "MAZ", "NAZ", "SAZ"]},
         "business_domain": {"type": "string", "description": "The business domains that are part of the Entity and the Attribute","enum":["Audit", "Common", "Customer", "Finance", "Geo", "Legal", "Logistics", "Marketing", "Order", "People", "Procurement", "Product", "Promotion", "Sales", "Supply", "Technology"]},
-        "business_Sub-Domain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
-        "subregion": {"type": "string", "description": "Subregion that a country may have."},
-        "data_Product": {"type": "string", "description": "Origin data source name"},
-        "tableName" : {"type":"string", "description": "gh_customer"},
-        "columnName": {"type":"string", "description":"customer_nm"},
+        "business_sub_domain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
+        "sub_region": {"type": "string", "description": "Subregion that a country may have."},
+        "data_product": {"type": "string", "description": "Origin data source name"},
+        "table_name" : {"type":"string", "description": "gh_customer"},
+        "colum_name": {"type":"string", "description":"customer_nm"},
         "country": {"type":"string", "description":"Ghana"}
         },
         "required": ["ObjectType", "tableName", "dlz", "zone", "business_domain", "business_Sub-Domain", "subregion", "data_Product"]
       },
       "BusinessMetadata": {
         "properties": {
-          "logicalName" : {"type":"string", "description":"Logical Name of table"},
-          "descriptionLogicalName": {"type": "string", "description": "Logical Description of the table, this description must contain the purpose of the table."},
-          "updateType": {"type": "string", "description": "The way the table is loaded full or incremental.", "enum": ["Append", "Full"]},
-          "updateFrequencyTable": {
+          "logical_name" : {"type":"string", "description":"Logical Name of table"},
+          "description_logical_name": {"type": "string", "description": "Logical Description of the table, this description must contain the purpose of the table."},
+          "update_type": {"type": "string", "description": "The way the table is loaded full or incremental.", "enum": ["Append", "Full"]},
+          "update_frequency_table": {
             "type": "array",
             "items": {
               "type": "object",
@@ -146,13 +146,13 @@
             },
             "description": "Array of update frequency information"
           },
-          "dataStorageTime": {"type": "string", "description": "Information on how long table data is available for use (e.g., 1 year, etc.)."},
-          "dataVolume": {"type": "string", "description": "The volume of data that the table can have. Ex.: (5gb, 302kb, 1tb)", "enum": ["Bytes", "Mb", "Gb", "Pb", "Tb"]},
+          "data_storage_time": {"type": "string", "description": "Information on how long table data is available for use (e.g., 1 year, etc.)."},
+          "data_volume": {"type": "string", "description": "The volume of data that the table can have. Ex.: (5gb, 302kb, 1tb)", "enum": ["Bytes", "Mb", "Gb", "Pb", "Tb"]},
           "country": {"type": "string", "description": "Country regarding of Zone", "enum": ["GH", "TZ", "UG", "ZA", "KR", "CN", "BE", "NL", "UK", "CO", "DO", "EC", "HN", "MX", "PA", "AR", "BO", "BR", "PY", "UY"]},
-          "sdiClassification": {"type": "string", "description": "Data privacy information", "enum": ["Strictly Confidential", "Confidential", "Internal Use Only", "Public"]},
-          "attributes_busEntAtt": {"$ref": "#/components/schemas/BusinessAttributes"},
-          "attributes_busPers": {"$ref": "#/components/schemas/Persona"},
-          "attributes_busLayer": {"$ref": "#/components/schemas/Layer"}
+          "sdi_classification": {"type": "string", "description": "Data privacy information", "enum": ["Strictly Confidential", "Confidential", "Internal Use Only", "Public"]},
+          "attributes_bus_att": {"$ref": "#/components/schemas/BusinessAttributes"},
+          "attributes_bus_pers": {"$ref": "#/components/schemas/Persona"},
+          "attributes_bus_layer": {"$ref": "#/components/schemas/Layer"}
         }
       },      
       "BusinessAttributes":{
@@ -163,11 +163,11 @@
             "items": {
               "type": "object",
                   "properties": {
-                    "attribute_Name"       : {"type": "string","description": "Logical name of the attribute (column)"},
+                    "attribute_name"       : {"type": "string","description": "Logical name of the attribute (column)"},
                     "attribute_description": {"type"   : "string", "description": "Description of the attribute (column) name must have a description of the purpose of the fields."},
                     "comment"              : {"type": "string","description": "A comment that may be relevant to the attribute"},
-                    "isPII"                : {"type": "string","description": "Indicator if the field is PII.","enum": ["Yes", "No"]},
-                    "businessRule"         : {"type": "string","description": "Business rules relevant to the field"},
+                    "is_pii"                : {"type": "string","description": "Indicator if the field is PII.","enum": ["Yes", "No"]},
+                    "business_rule"         : {"type": "string","description": "Business rules relevant to the field"},
                     "country"              : {"type": "string","description": "Country regarding of Zone"}
                   }
              }
@@ -177,18 +177,18 @@
           "Persona": {
             "type": "object",
             "properties": {
-              "dataOwnerEmail"       : {"type": "string","description": "Name of the person responsible for the data"},
-              "businessStewardEmail" : {"type": "string", "description": "Name of the person who will respond about the business."},
-              "technicalStewardEmail": {"type": "string","description": "Name of the person who will be responsible for the technical part."},
-              "dataGovernorEmail"    : {"type": "string", "description": "Responsible for DLZ Governance"},
-              "businessDomainGovernorEmail": {"type": "string", "description": "Responsible for Governance / DLZ/Domain"}
+              "data_owner_email"       : {"type": "string","description": "Name of the person responsible for the data"},
+              "business_steward_email" : {"type": "string", "description": "Name of the person who will respond about the business."},
+              "technical_steward_email": {"type": "string","description": "Name of the person who will be responsible for the technical part."},
+              "data_governor_email"    : {"type": "string", "description": "Responsible for DLZ Governance"},
+              "business_domain_governor_email": {"type": "string", "description": "Responsible for Governance / DLZ/Domain"}
             }
           },
           "Layer": {
             "type": "object",
             "properties": {
-              "medallionLayerName": {"type": "string", "description": "Name of the layers where the loaded data is stored inside UC", "enum": ["Raw", "Bronze", "Silver", "Gold"]},
-              "layerName": {"type": "string","description": "Name of the layers where the loaded data is stored.","enum": ["HZ", "STG", "DWH", "RPT", "AZ"]}
+              "medallion_layer_name": {"type": "string", "description": "Name of the layers where the loaded data is stored inside UC", "enum": ["Raw", "Bronze", "Silver", "Gold"]},
+              "layer_name": {"type": "string","description": "Name of the layers where the loaded data is stored.","enum": ["HZ", "STG", "DWH", "RPT", "AZ"]}
             }
           },
           "Validation": {
