@@ -23,8 +23,6 @@
               "schema": {
                 "$ref": "#/components/schemas/HeaderBusinessMetadata" },
                 "example": {
-                "ObjectType": "table",
-                "tableName": "gh_customer",
                 "dlz": "BEES",
                 "zone": "AFR",
                 "business_domain": "Customer",
@@ -32,36 +30,15 @@
                 "subregion": "-",
                 "data_Source": "Sap",
                 "object": {
-                  "name": "gh_customer",
-                  "tableClassification": "Cadastral",
-                  "tableType": "External",
-                  "databaseName": "brewdat_uc_bees_qa",
-                  "schema_Name": "brz_bees_sales_files",
-                  "columns": [
-                    {
-                      "columnName": "customer_nm",
-                      "attribute": {
-                        "attribute_Name": "customer_nm",
-                        "attribute_description": "the client name",
-                        "comment": "xxx",
-                        "isPII": "Yes",
-                        "businessRule": "no have",
-                        "sdiClassification": "Internal Use Only",
-                        "country": "Ghana"
-                      }
-                    }
-                  ]
-                },
+                  "tableName" : "gh_customer",
+                  "columnName": "customer_nm",
+                  "country": "Ghana" },
+                "object_type": 
+                {
                 "logicalName": "Customer",
-                "descriptionLogicalName": "Table that has information regarding Customer",
+                "descriptionLogicalName": "Entity that has information regarding Customer",
                 "update_Type": "Full",
-                "updateFrequencyTable": [
-                  {
-                    "frequency": "Daily",
-                    "time": "00:00",
-                    "timezone": "UTC-6"
-                  }
-                ],
+                "updateFrequencyTable": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
                 "data_Storage_time": "1 year",
                 "data_Volume": "5gb",
                 "country": "Ghana",
@@ -87,6 +64,7 @@
                   "medallionLayerName": "brz",
                   "layerName": "Bronze"
                 }
+              } 
               }
             }
           }
@@ -137,30 +115,19 @@
   "components": {
     "schemas": {
       "HeaderBusinessMetadata": {
-        "type": "object",
         "properties": {
-          "ObjectType": {"type": "string", "description": "Object Type. Ex: table"},
-          "tableName": {"type": "string", "description": "Table Name"},
-          "dlz": {"type": "string", "description": "DLZ Abbreviation", "enum": ["AFR","ANLT","APC","AUR", "BEES","BRWR", "EUR", "GHQ", "GHQML",  "IL",  "LOLA", " MRTC",  "MAZ", "MAZML",  " MGMT", "MLPLT", "NAZ", "PPLE", "PLTL", " PRTL", "SPLYC", "NCSA"]},
-          "zone": {"type": "string", "description": "Abbreviation for Zones","enum": ["AFR", "APC", "EUR", "GHQ", "MAZ", "NAZ", "SAZ"]},
-          "business_domain": {"type": "string", "description": "The business domains that are part of the Entity and the Attribute","enum":["Audit", "Common", "Customer", "Finance", "Geo", "Legal", "Logistics", "Marketing", "Order", "People", "Procurement", "Product", "Promotion", "Sales", "Supply", "Technology"]},
-          "business_Sub-Domain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
-          "subregion": {"type": "string", "description": "Subregion that a country may have."},
-          "data_Product": {"type": "string", "description": "Origin data source name"}
+        "dlz": {"type": "string", "description": "DLZ Abbreviation", "enum": ["AFR","ANLT","APC","AUR", "BEES","BRWR", "EUR", "GHQ", "GHQML",  "IL",  "LOLA", " MRTC",  "MAZ", "MAZML",  " MGMT", "MLPLT", "NAZ", "PPLE", "PLTL", " PRTL", "SPLYC", "NCSA"]},
+        "zone": {"type": "string", "description": "Abbreviation for Zones","enum": ["AFR", "APC", "EUR", "GHQ", "MAZ", "NAZ", "SAZ"]},
+        "business_domain": {"type": "string", "description": "The business domains that are part of the Entity and the Attribute","enum":["Audit", "Common", "Customer", "Finance", "Geo", "Legal", "Logistics", "Marketing", "Order", "People", "Procurement", "Product", "Promotion", "Sales", "Supply", "Technology"]},
+        "business_Sub-Domain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
+        "subregion": {"type": "string", "description": "Subregion that a country may have."},
+        "data_Product": {"type": "string", "description": "Origin data source name"}
         },
         "required": ["ObjectType", "tableName", "dlz", "zone", "business_domain", "business_Sub-Domain", "subregion", "data_Product"]
       },
       "BusinessMetadata": {
-        "type": "object",
         "properties": {
-          "object_type": {"type": "string", "description": "Identifies the type of object ", "enum": ["Table"]},
-          "attributes" : {"$ref": "#/components/schemas/BusinssEntity"}
-        },
-        "required": ["object_type", "attributes"]
-      },
-      "BusinssEntity": {
-        "type": "object",
-        "properties": {
+          "logicalName" : {"type":"string", "description":"Logical Name of table"},
           "descriptionLogicalName": {"type": "string", "description": "Logical Description of the table, this description must contain the purpose of the table."},
           "updateType": {"type": "string", "description": "The way the table is loaded full or incremental.", "enum": ["Append", "Full"]},
           "updateFrequencyTable": {
@@ -180,12 +147,12 @@
           "dataVolume": {"type": "string", "description": "The volume of data that the table can have. Ex.: (5gb, 302kb, 1tb)", "enum": ["Bytes", "Mb", "Gb", "Pb", "Tb"]},
           "country": {"type": "string", "description": "Country regarding of Zone", "enum": ["GH", "TZ", "UG", "ZA", "KR", "CN", "BE", "NL", "UK", "CO", "DO", "EC", "HN", "MX", "PA", "AR", "BO", "BR", "PY", "UY"]},
           "sdiClassification": {"type": "string", "description": "Data privacy information", "enum": ["Strictly Confidential", "Confidential", "Internal Use Only", "Public"]},
-          "attributes_busEntAtt": {"$ref": "#/components/schemas/BusinessEntitiesAttributes"},
+          "attributes_busEntAtt": {"$ref": "#/components/schemas/BusinessAttributes"},
           "attributes_busPers": {"$ref": "#/components/schemas/Persona"},
           "attributes_busLayer": {"$ref": "#/components/schemas/Layer"}
         }
       },      
-      "BusinessEntitiesAttributes":{
+      "BusinessAttributes":{
         "type": "object",
         "properties": {
           "attributes": {
