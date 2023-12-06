@@ -20,55 +20,54 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/HeaderBusinessMetadata" },
+              "schema": {                
                 "example": {
+                "headerBusinessMetadataStrucutre": {
                 "dlz": "BEES",
                 "zone": "AFR",
                 "businessDomain": "Customer",
                 "businessSubDomain": "-",
                 "subRegion": "-",
+                "country": "Ghana",
                 "dataProduct": "Sap",
-                "object": {
-                  "tableName" : "gh_customer",
-                  "columnName": "customer_nm",
-                  "country": "Ghana" },
-                "object_type": 
-                {
+                "schemaName" : "brz_bees_sales_files",
+                "tableName" : "gh_customer",
+                "columnName": "customer_nm"
+                },
+                "businessMetadataStructure": { 
                 "logicalName": "Customer",
                 "descriptionLogicalName": "Entity that has information regarding Customer",
                 "updateType": "Full",
-                "updateFrequencyTable": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
                 "dataStorageTime": "1 year",
                 "dataVolume": "5gb",
-                "country": "Ghana",
+                "updateFrequencyTable": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
                 "attribute": [
-                  {
-                    "attributeName": "customer_nm",
-                    "attributeDescription": "the client name",
-                    "comment": "xxx",
-                    "isPII": "Yes",
-                    "businessRule": "no have",
-                    "sdiClassification": "Internal Use Only",
-                    "country": "Ghana"
+                    {
+                        "logicalAttributeName": "customer_nm",
+                        "logicalAttributeDescription": "the client name",
+                        "comment": "xxx",
+                        "isPII": "Yes",
+                        "businessRule": "no have",
+                        "sdiClassification": "Internal Use Only"
+                    }
+                  ],
+                  "personas": {
+                    "dataOwnerEmail": "helen.place@za.ab-inbev.com",
+                    "businessStewardEmail": "helen.place@za.ab-inbev.com",
+                    "technicalStewardEmail": "helen.place@za.ab-inbev.com",
+                    "dataGovernorEmail": "Name of Data Governor",
+                    "businessDomainGovernorEmail": "Name of Business Domain Governor"
+                  },
+                  "layers": {
+                    "medallionLayerName": "brz",
+                    "layerName": "Bronze"
                   }
-                ],
-                "personas": {
-                  "dataOwnerEmail": "helen.place@za.ab-inbev.com",
-                  "businessStewardEmail": "helen.place@za.ab-inbev.com",
-                  "technicalStewardEmail": "helen.place@za.ab-inbev.com",
-                  "dataGovernorEmail": "Name of Data Governor",
-                  "businessDomainGovernorEmail": "Name of Business Domain Governor"
-                },
-                "layers": {
-                  "medallionLayerName": "brz",
-                  "layerName": "Bronze"
-                }
-              } 
+                } 
               }
             }
           }
-       },
+        }
+      },
           "responses": 
           {
             "200": {
@@ -121,34 +120,23 @@
         "businessDomain": {"type": "string", "description": "The business domains that are part of the Entity and the Attribute","enum":["Audit", "Common", "Customer", "Finance", "Geo", "Legal", "Logistics", "Marketing", "Order", "People", "Procurement", "Product", "Promotion", "Sales", "Supply", "Technology"]},
         "businessSubDomain": {"type": "string", "description": "The business sub-domains that are part of the DB"},
         "subRegion": {"type": "string", "description": "Subregion that a country may have."},
+        "country": {"type": "string", "description": "Country regarding of Zone", "enum": ["GH", "TZ", "UG", "ZA", "KR", "CN", "BE", "NL", "UK", "CO", "DO", "EC", "HN", "MX", "PA", "AR", "BO", "BR", "PY", "UY"]},
         "dataProduct": {"type": "string", "description": "Origin data source name"},
-        "tableName" : {"type":"string", "description": "gh_customer"},
-        "columName": {"type":"string", "description":"customer_nm"},
-        "country": {"type":"string", "description":"Ghana"}
-        },
-        "required": ["ObjectType", "tableName", "dlz", "zone", "business_domain", "business_Sub-Domain", "subregion", "data_Product"]
+        "schemaName" : {"type": "string", "description": "Database schema"},
+        "tableName" : {"type":"string", "description": "Table Name"},
+        "columName": {"type":"string", "description":"Column Name"}
+       },
+        "required": ["dlz", "zone", "business_domain","data_Product", "schemaName","country","tableName", "columnName"]
       },
       "BusinessMetadata": {
         "properties": {
           "logicalName" : {"type":"string", "description":"Logical Name of table"},
           "descriptionLogicalName": {"type": "string", "description": "Logical Description of the table, this description must contain the purpose of the table."},
           "updateType": {"type": "string", "description": "The way the table is loaded full or incremental.", "enum": ["Append", "Full"]},
-          "updateFrequencyTable": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "frequency": {"type": "string", "description": "Frequency of the update"},
-                "time": {"type": "string", "description": "Time of the update"},
-                "timezone": {"type": "string", "description": "Timezone of the update"}
-              },
-              "required": ["frequency", "time", "timezone"]
-            },
-            "description": "Array of update frequency information"
-          },
           "dataStorageTime": {"type": "string", "description": "Information on how long table data is available for use (e.g., 1 year, etc.)."},
           "dataVolume": {"type": "string", "description": "The volume of data that the table can have. Ex.: (5gb, 302kb, 1tb)", "enum": ["Bytes", "Mb", "Gb", "Pb", "Tb"]},
-          "country": {"type": "string", "description": "Country regarding of Zone", "enum": ["GH", "TZ", "UG", "ZA", "KR", "CN", "BE", "NL", "UK", "CO", "DO", "EC", "HN", "MX", "PA", "AR", "BO", "BR", "PY", "UY"]},
+          "updateFrequencyTable": {"type": "array","items": {"type": "object", "properties": {"frequency": {"type": "string", "description": "Frequency of the update"},"time": {"type": "string", "description": "Time of the update"},"timezone": {"type": "string", "description": "Timezone of the update"}},
+          "required": ["frequency", "time", "timezone"]},"description": "Array of update frequency information"},
           "sdiClassification": {"type": "string", "description": "Data privacy information", "enum": ["Strictly Confidential", "Confidential", "Internal Use Only", "Public"]},
           "attributesBusAtt": {"$ref": "#/components/schemas/BusinessAttributes"},
           "attributesBusPers": {"$ref": "#/components/schemas/Persona"},
@@ -163,12 +151,12 @@
             "items": {
               "type": "object",
                   "properties": {
-                    "attributeName"       : {"type": "string","description": "Logical name of the attribute (column)"},
-                    "attributeDescription": {"type"   : "string", "description": "Description of the attribute (column) name must have a description of the purpose of the fields."},
-                    "comment"              : {"type": "string","description": "A comment that may be relevant to the attribute"},
+                    "logicalAttributeName"         : {"type": "string","description": "Logical name of the attribute (column)"},
+                    "logicalAttributeDescription"  : {"type": "string","description": "Description of the attribute (column) name must have a description of the purpose of the fields."},
+                    "comment"               : {"type": "string","description": "A comment that may be relevant to the attribute"},
                     "is_PII"                : {"type": "string","description": "Indicator if the field is PII.","enum": ["Yes", "No"]},
-                    "businessRule"         : {"type": "string","description": "Business rules relevant to the field"},
-                    "country"              : {"type": "string","description": "Country regarding of Zone"}
+                    "businessRule"          : {"type": "string","description": "Business rules relevant to the field"},
+                    "country"               : {"type": "string","description": "Country regarding of Zone"}
                   }
              }
             }
