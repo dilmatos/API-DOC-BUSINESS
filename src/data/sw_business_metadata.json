@@ -155,7 +155,7 @@
                     "logicalAttributeDescription"  : {"type": "string","description": "Description of the attribute (column) name must have a description of the purpose of the fields."},
                     "comment"               : {"type": "string","description": "A comment that may be relevant to the attribute"},
                     "is_PII"                : {"type": "string","description": "Indicator if the field is PII.","enum": ["Yes", "No"]},
-                    "businessRule"          : {"type": "string","description": "Business rules relevant to the field"},
+                    "businessRule"          : {"type": "string","description": "Business rules relevant to the field"}
                   }
              }
             }
