@@ -25,8 +25,7 @@
                 "headerBusinessMetadataStrucutre": {
                 "dataCatalogName" :"brewdat_uc_bees_qa",
                 "schemaName" : "brz_bees_sales_files",
-                "tableName" : "gh_customer",
-                "columnName": "customer_nm"
+                "tableName" : "gh_customer"               
                 },
                 "businessMetadataStructure": { 
                 "logicalName": "Customer",
@@ -36,8 +35,8 @@
                 "dataVolume": "5gb",
                 "updateFrequencyTable": [{ "frequency": "Daily", "time": "00:00", "timezone": "UTC-6" } ],
                 "attribute": [
-                    {
-                        "logicalAttributeName": "customer_nm",
+                    {   "columnName": "customer_nm",
+                        "logicalAttributeName": "customer name",
                         "logicalAttributeDescription": "the client name",
                         "comment": "xxx",
                         "isPII": "Yes",
@@ -111,8 +110,7 @@
         "properties": {
         "dataCatalogName":{"type": "string", "description": "Catalog Name"},
         "schemaName" : {"type": "string", "description": "Database schema"},
-        "tableName" : {"type":"string", "description": "Table Name"},
-        "columName": {"type":"string", "description":"Column Name"}
+        "tableName" : {"type":"string", "description": "Table Name"}        
        },
         "required": ["dataCatalogName", "schemaName", "tableName", "columName"]
       },
@@ -140,13 +138,14 @@
             "items": {
               "type": "object",
                   "properties": {
+                    "columName": {"type":"string", "description":"Column Name"},
                     "logicalAttributeName"         : {"type": "string","description": "Logical name of the attribute (column)"},
                     "logicalAttributeDescription"  : {"type": "string","description": "Description of the attribute (column) name must have a description of the purpose of the fields."},
                     "comment"               : {"type": "string","description": "A comment that may be relevant to the attribute"},
                     "is_PII"                : {"type": "string","description": "Indicator if the field is PII.","enum": ["Yes", "No"]},
                     "businessRule"          : {"type": "string","description": "Business rules relevant to the field"}
                   },
-                  "required": ["logicalAttributeName", "logicalAttributeDescription", "is_PII"]
+                  "required": ["columName", "logicalAttributeName", "logicalAttributeDescription", "is_PII"]
              }
             }
            }
